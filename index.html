@@ -1,0 +1,108 @@
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(200, 200, 22);
+    }
+
+    .inputcontainer {
+        height: 200px;
+        background-color: #fff;
+        max-width: 560px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+        font-size: 24px;
+        text-transform: capitalize;
+        padding-bottom: 10px;
+        color: black;
+    }
+
+    textarea {
+        height: 100%;
+        width: 100%;
+        border: solid black reba(0, 0, 0, 0.38);
+        padding: 25px 15px;
+        font-size: 20px;
+        font-weight: 400;
+        outline: none;
+
+    }
+
+    textarea:focus,
+    textarea:valid {
+        border-color: gray;
+
+    }
+
+    textarea::placeholder {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .characters {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+    }
+
+    .popup {
+        color: red;
+        padding: 5px;
+    }
+
+    .hidden{
+        display: none;
+
+    }
+</style>
+<div class="container">
+    <div class="inputcontainer">
+        <h1 class="title">MESSAGE</h1>
+        <textarea placeholder="enter your message" maxlength="200"></textarea>
+        <div class="characters">
+
+            <p class="counter">0/200</p>
+
+
+        </div>
+        
+
+        <p class="popup hidden">you reached maximum characters</p>
+    </div>
+</div>
+<script>
+    var maxlength = 200;
+    var inputcontainer = document.querySelector(".inputcontainer")
+    var textarea = document.querySelector("textarea")
+    var outline =document.getElementById(".popup")
+    var counter = document.querySelector(".counter")
+    textarea.addEventListener("input", function (event) {
+        var target = event.target;
+
+        var currentLength = target.value.length;
+        counter.innerHTML = currentLength + " / " + maxlength
+        if (currentLength == 200) {
+            var outline =document.querySelector(".popup")
+            outline.classList.remove("hidden")
+
+        }
+    })
+
+
+</script>
